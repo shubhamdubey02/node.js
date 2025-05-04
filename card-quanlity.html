@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Card Quantity</title>
+</head>
+
+<body>
+    <button onclick="console.log(`card Quantity:${carquality}`);">Show Quantity</button>
+    <button onclick="carquality=carquality+1;
+    console.log(`card Quantity:${carquality}`);">Add to card</button>
+    <button onclick="carquality=carquality+2;
+    console.log(`card Quantity:${carquality}`);">+2</button>
+    <button onclick="carquality=carquality+3;
+    console.log(`card Quantity:${carquality}`);">+3</button>
+    <button onclick="carquality=0;
+    console.log('card was reset');
+    console.log(`card Quantity:${carquality}`);">Rest card</button>
+    <script>
+        let carquality = 0;
+    </script>
+</body>
+
+</html>
