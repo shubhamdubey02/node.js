@@ -26,6 +26,39 @@
         } else {
             console.log("you can drive");
         }
+        // and opretor(&&)
+        console.log(true && false);
+        console.log(0.2 >= 0 && 0.2 < 1 / 3);
+        // or oprator(||)
+        console.log(true || false);
+        // not oprator(!)
+        console.log(!true);
+
+        const hour = new Date().getHours();
+        if (hour >= 6 && hour <= 12) {
+            console.log('Good morning!');
+        } else if (hour >= 13 && hour <= 17) {
+            console.log('Good afternoon!');
+        } else {
+            console.log('Good night!');
+        }
+        const hours = 10;
+        const name = "Shubham";
+        if (hours >= 6 && hours <= 12) {
+            console.log(`Good morning ${name}!`);
+        } else if (hours >= 13 && hours <= 17) {
+            console.log(`Good afternoon ${name}!`);
+        } else {
+            console.log(`Good night ${name}!`);
+        }
+        const ages = 10;
+        const isHoliday = false;
+        if (ages >= 18 && !isHoliday) {
+            console.log("You get a discount!");
+        } else {
+            console.log("Sorry, no discount available.");
+        }
+
     </script>
 </body>
 
