@@ -2,26 +2,82 @@
 <html>
 
 <head>
-    <title>Rock pepers</title>
+    <title>Rock Paper Scissors</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
 
 <body>
-    <p>Rock Peper Scissors</p>
-    <button onclick="const randomNumber=Math.random();
-            if(randomNumber>=0&&randomNumber<1/3){
-                console.log('rock');
-            }else if(randomNumber>=1/3&&randomNumber<2/3){
-                console.log('Peper');
-            }
-            else if(randomNumber>=2/3&&randomNumber<1){
-                console.log('Scissors');
-            }
-            ">Rock</button>
-    <button>Peper</button>
-    <button>Scissors</button>
-    <script>
+    <h1>Rock Paper Scissors</h1>
+    <button onclick="playGame('rock')">Rock</button>
+    <button onclick="playGame('paper')">Paper</button>
+    <button onclick="playGame('scissors')">Scissors</button>
 
+    <script>
+        let playerScore = 0;
+        let computerScore = 0;
+        let ties = 0;
+        function getComputerMove() {
+            const moves = ['rock', 'paper', 'scissors'];
+            const randomIndex = Math.floor(Math.random() * 3);
+            return moves[randomIndex];
+        }
+
+        function determineWinner(playerMove, computerMove) {
+            if (playerMove === computerMove) {
+                return 'tie';
+            }
+
+            if (
+                (playerMove === 'rock' && computerMove === 'scissors') ||
+                (playerMove === 'paper' && computerMove === 'rock') ||
+                (playerMove === 'scissors' && computerMove === 'paper')
+            ) {
+                return 'player';
+            } else {
+                return 'computer';
+            }
+        }
+
+
+        function playGame(playerMove) {
+            const computerMove = getComputerMove();
+            const result = determineWinner(playerMove, computerMove);
+            if (result === 'player') {
+                playerScore++;
+            } else if (result === 'computer') {
+                computerScore++;
+            } else {
+                ties++;
+            }
+            let message = `You chose ${playerMove}\n`;
+            message += `Computer chose ${computerMove}\n\n`;
+
+            if (result === 'tie') {
+                message += "It's a tie!";
+            } else if (result === 'player') {
+                message += "You win!";
+            } else {
+                message += "Computer wins!";
+            }
+
+            message += `\n\nScore:\nPlayer: ${playerScore}\nComputer: ${computerScore}\nTies: ${ties}`;
+
+            alert(message);
+        }
     </script>
 </body>
-</head>
 
 </html>

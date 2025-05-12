@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>object</title>
+
+<body>
+
+    <script>
+        const product = {
+            rating: 'socks',
+            'delivery': '1 day',
+            rating: {
+                starts: 4.5,
+                count: 87
+            },
+            fun: function function1() {
+                console.log('function inside object');
+            }
+        };
+        console.log(product.rating.count);
+        console.log(product);
+        // console.log(product.name);
+        // console.log(product.price);
+        product.fun();
+        console.log(JSON.stringify(product));
+    </script>
+</body>
+</head>
+
+</html>
