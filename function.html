@@ -22,14 +22,10 @@
         function convertToCelsius(fahrenheit) {
             return (fahrenheit - 32) * 5 / 9;
         }
-        console.log(convertToCelsius(86)); // Output: 30
-
-        // Reusing the previous conversion function
+        console.log(convertToCelsius(86));
         function convertToCelsius(fahrenheit) {
             return (fahrenheit - 32) * 5 / 9;
         }
-
-        // Adding the inverse function for completeness
         function convertToFahrenheit(celsius) {
             return (celsius * 9 / 5) + 32;
         }
@@ -46,9 +42,8 @@
             }
         }
 
-        // Example usage:
-        console.log(convertTemperature(25, 'C')); // Output: "77F"
-        console.log(convertTemperature(86, 'F')); // Output: "30C"
+        console.log(convertTemperature(25, 'C'));
+        console.log(convertTemperature(86, 'F')); 
 
     </script>
 </body>
