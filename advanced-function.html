@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Advance function</title>
+
+<body>
+    <script>
+        function greeting() {
+            console.log('hello');
+        }
+        greeting();
+        const function1 = function () {
+            console.log('helle function');
+        };
+        console.log(function1);
+        console.log(typeof function1);
+        function1();
+
+        const object = {
+            num: 2,
+            fun: function greeting() {
+                console.log('hello3');
+            }
+        };
+        object.fun();
+
+        function display(parem) {
+            console.log(parem);
+        }
+        display(2);
+    </script>
+</body>
+</head>
+
+</html>
