@@ -16,7 +16,7 @@ let score = JSON.parse(localStorage.getItem('score')) || {
   }
   */
   
-  let isAutoPlaying = false;
+  let isAutoPlaying = false;  
   let intervalId;
   
   //const autoPlay = () => {
