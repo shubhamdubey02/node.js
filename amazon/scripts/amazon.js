@@ -1,3 +1,8 @@
+import { card, addtocard } from "../data/card.js";
+import { products } from "../data/products.js";
+import { formateCurrency } from "./utils/money.js";
+let productHTML = "";
+
 (() => {
   const products = [
     {
@@ -36,9 +41,8 @@
     productHTML += `
       <div class="product-container">
         <div class="product-image-container">
-          <img class="product-image" src="${product.image}" alt="${
-      product.name
-    }">
+          <img class="product-image" src="${product.image}" alt="${product.name
+      }">
         </div>
 
         <div class="product-name limit-text-to-2-lines">
@@ -46,28 +50,26 @@
         </div>
 
         <div class="product-rating-container">
-          <img class="product-rating-stars" src="images/ratings/rating-${
-            product.rating.stars * 10
-          }.png" alt="${product.rating.stars} stars">
+          <img class="product-rating-stars" src="images/ratings/rating-${product.rating.stars * 10
+      }.png" alt="${product.rating.stars} stars">
           <div class="product-rating-count link-primary">
             ${product.rating.count}
           </div>
         </div>
 
         <div class="product-price">
-          $${(product.priceCents / 100).toFixed(2)}
+          $${formateCurrency(product.priceCents)}
         </div>
 
         <div class="product-quantity-container">
           <select>
             ${[...Array(10)]
-              .map(
-                (_, i) =>
-                  `<option value="${i + 1}" ${i === 0 ? "selected" : ""}>${
-                    i + 1
-                  }</option>`
-              )
-              .join("")}
+        .map(
+          (_, i) =>
+            `<option value="${i + 1}" ${i === 0 ? "selected" : ""}>${i + 1
+            }</option>`
+        )
+        .join("")}
           </select>
         </div>
 
@@ -92,26 +94,20 @@
     console.error("Element with class 'js-products-grid' not found.");
   }
 
+  document.querySelector(".js-card-quantity").innerHTML = card.length;
+  function updateCartQuantity() {
+    let cardQuantity = 0;
+    card.forEach((cartItem) => {
+      cardQuantity += cartItem.quantity;
+    });
+    document.querySelector(".js-card-quantity").innerHTML = cardQuantity;
+  }
+
   document.querySelectorAll(".js-add-to-cart").forEach((button) => {
     button.addEventListener("click", () => {
       const productId = parseInt(button.dataset.productId);
-      let matchingItem = cart.find((item) => item.productId === productId);
-
-      if (matchingItem) {
-        matchingItem.quantity += 1;
-      } else {
-        cart.push({
-          productId: productId,
-          quantity: 1,
-        });
-      }
-      let cardQuantity = 0;
-      cart.forEach((item) => {
-        cardQuantity += item.quantity;
-      });
-      document.querySelector('.js-card-quantity').innerHTML = cardQuantity;
-      console.log(cardQuantity);
-      console.log(cart);
+      addtocard(productId);
+      updateCartQuantity();
     });
   });
 })();
